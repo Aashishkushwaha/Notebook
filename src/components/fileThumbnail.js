@@ -9,11 +9,11 @@ const FileThumbnail = ({ file, active, index, onChangeCurrentFileHandler }) => {
       onClick={() => onChangeCurrentFileHandler(index)}
     >
       <li className="file" style={{ textOverflow: "ellipsis" }}>
-        {file.content}
+        {file.content.length ? file.content : "New file"}
       </li>
       <div style={{ display: "flex", justifyContent: "space-between" }}>
-        <span>{file.isLocked ? "Locked" : ""}</span>
-        <span>{file.lastModified}</span>
+        <span style={{fontSize: '.7rem'}}>{file.isLocked ? "Locked" : ""}</span>
+        <span style={{fontSize: '.7rem'}}>{file.lastModified}</span>
       </div>
     </div>
   );

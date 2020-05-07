@@ -16,8 +16,9 @@ class App extends React.Component {
       isLocked: false,
     },
     currentFileIndex: 0,
-    showModal: true,
+    showModal: false,
     modalContent: "This is modal",
+    currentView: "list",
   };
 
   onEditorChangeHandler = (e) => {
@@ -55,7 +56,7 @@ class App extends React.Component {
   onCreateFileHandler = () => {
     let files = this.state.files;
     let newFile = {
-      content: "New File",
+      content: "",
       lastModified: new Date().toISOString(),
       isLocked: false,
     };
@@ -67,6 +68,12 @@ class App extends React.Component {
       currentFile: newFile,
       currentFileIndex: 0,
     });
+  };
+
+  onViewChangeHandler = () => {
+    this.setState((state) => ({
+      currentView: state.currentView === "list" ? "grid" : "list",
+    }));
   };
 
   onDeleteFileHandler = () => {
@@ -125,9 +132,14 @@ class App extends React.Component {
           onCreateFileHandler={this.onCreateFileHandler}
           onLockFileHandler={this.onLockFileHandler}
           onDeleteFileHandler={this.onDeleteFileHandler}
+          onViewChangeHandler={this.onViewChangeHandler}
         />
         <div className="mainContainer">
-          <div>
+          <div style={{ overflowY: 'auto' }}
+            className={
+              this.state.currentView === "grid" ? "gridFileContainer" : null
+            }
+          >
             {this.state.files.map((file, index) => (
               <FileThumbnail
                 key={index}

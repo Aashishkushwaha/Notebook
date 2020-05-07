@@ -84,3 +84,34 @@ textarea:focus {
 .hide-modal {
   top: -100vh;
 }
+
+.gridFileContainer {
+  display: grid;
+  grid-template-columns: 9.8rem 9.8rem;
+  overflow-y: auto;
+}
+
+.gridFileContainer > div > div {
+  flex-direction: column;
+}
+
+::-webkit-scrollbar {
+  width: .4rem;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  display: none;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #1f1f1f;
+  width: 1rem;
+  border-radius: 10rem;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
