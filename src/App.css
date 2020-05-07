@@ -2,7 +2,7 @@
   display: grid;
   width: 100%;
   height: calc(100vh - 3.45rem);
-  grid-template-columns: 1fr 3fr;
+  grid-template-columns: 20rem calc(100vw - 20rem);
 }
 
 .mainContainer .textareaContainer {
@@ -34,4 +34,53 @@ textarea:focus {
   left: 50%;
   transform: translateX(-50%);
   font-size: .8rem;
+}
+
+.fileContainer {
+  list-style: none;
+  margin: .3rem;
+  padding: .5rem;
+  border: 2px solid #0a0a0a41;
+  border-radius: .3rem;
+}
+
+.file {
+  width: 100%;
+  padding: .3rem 0;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.activeFile {
+  background-color: #f3f378d0;
+}
+
+.modal {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  z-index: 5;
+  transform: translate(-30%, -50%);
+  width: 60vw;
+  padding: 1.6rem 1rem 1rem;
+  box-shadow: 0 6px 4px .1px rgba(93, 128, 151, 0.486);
+  background: #fff;
+  transition: all .4s;
+}
+
+.close {
+  position: absolute;
+  right: 1rem;
+  top: .1rem;
+  font-size: 1.6rem;
+  transition: color .5s;
+}
+
+.close:hover {
+  color: red;
+  cursor: pointer;
+}
+
+.hide-modal {
+  top: -100vh;
 }

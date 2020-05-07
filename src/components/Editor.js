@@ -4,8 +4,8 @@ const Editor = (props) => {
 
   return (
     <div className="textareaContainer">
-      <textarea></textarea>
-      <div className="timestamp">{new Date().toISOString()}</div>
+      <textarea readOnly={!props.isEditable} onChange={props.onEditorChangeHandler} value={props.editorText}></textarea>
+      <div className="timestamp">{props.lastModified ? props.lastModified: ""}</div>
     </div>
   );
 };

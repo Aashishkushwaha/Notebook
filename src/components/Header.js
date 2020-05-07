@@ -8,9 +8,9 @@ const Header = (props) => {
       <ul className={classes.optionsContainer}>
         <li>one</li>
         <li>list/grid</li>
-        <li>new</li>
-        <li>delete</li>
-        <li>Lock</li>
+        <li onClick={props.onCreateFileHandler}>new</li>
+        <li onClick={props.onDeleteFileHandler}>delete</li>
+        <li onClick={props.onLockFileHandler}>Lock</li>
       </ul>
       <div className={classes.searchContainer}>
         <input placeholder="search" />
