@@ -133,6 +133,7 @@ class App extends React.Component {
           onLockFileHandler={this.onLockFileHandler}
           onDeleteFileHandler={this.onDeleteFileHandler}
           onViewChangeHandler={this.onViewChangeHandler}
+          currentView={this.state.currentView}
         />
         <div className="mainContainer">
           <div style={{ overflowY: 'auto' }}

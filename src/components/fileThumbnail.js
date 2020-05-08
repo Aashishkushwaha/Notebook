@@ -1,4 +1,6 @@
 import React from "react";
+import open from '../assets/images/openlock.svg'
+import closed from '../assets/images/closedlock.svg'
 
 const FileThumbnail = ({ file, active, index, onChangeCurrentFileHandler }) => {
   let assignedClasses = ["fileContainer"];
@@ -11,8 +13,8 @@ const FileThumbnail = ({ file, active, index, onChangeCurrentFileHandler }) => {
       <li className="file" style={{ textOverflow: "ellipsis" }}>
         {file.content.length ? file.content : "New file"}
       </li>
-      <div style={{ display: "flex", justifyContent: "space-between" }}>
-        <span style={{fontSize: '.7rem'}}>{file.isLocked ? "Locked" : ""}</span>
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start" }}>
+        <img style={{height: '1.5rem'}} src={file.isLocked ? closed : open} alt="lock/unlocked"/>
         <span style={{fontSize: '.7rem'}}>{file.lastModified}</span>
       </div>
     </div>

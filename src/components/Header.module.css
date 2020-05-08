@@ -23,6 +23,13 @@
 
 .optionsContainer > li {
   display: inline-block;
+  padding: .4rem;
+  border-bottom: 2px inset #e6e485;
+  border-radius: .4rem;
+}
+
+.optionsContainer > li > img {
+  height: 1.3rem;
 }
 
 .optionsContainer > li:hover {
@@ -40,11 +47,12 @@
   border: none;
   text-align: center;
   color: #3f3f3f;
-  border-bottom: 1px solid #0000003d;
+  border-bottom: 2px solid #0000003d;
 }
 
 .searchContainer > input:focus {
   outline: none;
   text-align: justify;
-  box-shadow: 0 1px 10px -1px #0000003d;
+  border-bottom: 2px inset #e0d418fa;
+  border-radius: .4rem;
 }

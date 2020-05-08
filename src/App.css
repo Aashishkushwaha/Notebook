@@ -2,7 +2,7 @@
   display: grid;
   width: 100%;
   height: calc(100vh - 3.45rem);
-  grid-template-columns: 20rem calc(100vw - 20rem);
+  grid-template-columns: 20rem calc(100vw - 20.4rem);
 }
 
 .mainContainer .textareaContainer {
@@ -40,8 +40,9 @@ textarea:focus {
   list-style: none;
   margin: .3rem;
   padding: .5rem;
-  border: 2px solid #0a0a0a41;
+  box-shadow: 0 0 4px .1px #0a0a0a41;
   border-radius: .3rem;
+  border-bottom: 2px solid rgb(197, 180, 22);
 }
 
 .file {
@@ -88,8 +89,13 @@ textarea:focus {
 .gridFileContainer {
   display: grid;
   grid-template-columns: 9.8rem 9.8rem;
+  grid-template-rows: repeat(auto-fill, minmax(6.5rem, 6.5rem));
   overflow-y: auto;
 }
+
+/* .gridFileContainer > div {
+  height: 5rem;
+} */
 
 .gridFileContainer > div > div {
   flex-direction: column;
