@@ -2,7 +2,7 @@ import React from "react";
 import open from '../assets/images/openlock.svg'
 import closed from '../assets/images/closedlock.svg'
 
-const FileThumbnail = ({ file, active, index, onChangeCurrentFileHandler }) => {
+const FileThumbnail = ({ file, active, index, onChangeCurrentFileHandler, id }) => {
   let assignedClasses = ["fileContainer"];
   assignedClasses.push(active ? "activeFile" : null);
   return (
@@ -10,7 +10,7 @@ const FileThumbnail = ({ file, active, index, onChangeCurrentFileHandler }) => {
       className={assignedClasses.join(" ")}
       onClick={() => onChangeCurrentFileHandler(index)}
     >
-      <li className="file" style={{ textOverflow: "ellipsis" }}>
+      <li className="file" id={id} style={{ textOverflow: "ellipsis" }}>
         {file.content.length ? file.content : "New file"}
       </li>
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start" }}>

@@ -8,17 +8,20 @@ import FileThumbnail from "./components/fileThumbnail";
 class App extends React.Component {
   state = {
     files: [],
+    displayFiles: [],
     enableEditor: false,
     editorText: "",
     currentFile: {
       content: "",
       lastModified: null,
       isLocked: false,
+      id: null,
     },
     currentFileIndex: 0,
     showModal: false,
     modalContent: "This is modal",
     currentView: "list",
+    searchText: "",
   };
 
   onEditorChangeHandler = (e) => {
@@ -34,6 +37,42 @@ class App extends React.Component {
       },
       files: files,
     });
+  };
+
+  onSearchTextChangeHandler = (e) => {
+    this.setState(
+      {
+        searchText: e.target.value,
+        displayFiles: this.state.files
+      },
+      () => {
+        let newDisplayFiles = [...this.state.files];
+        newDisplayFiles = newDisplayFiles.filter((file, index) => {
+          let text = this.state.searchText;
+          let regexText = text.replace(/[-[\]{}()*+?.,\\^$|#(\s)]/g, "\\$&");
+          let regexp = new RegExp(regexText, "ig");
+          let htmlFile = document.getElementById(`${file.id}`);
+          let isMatched = false;
+          if (text.length && htmlFile) {
+            htmlFile.innerHTML = htmlFile.innerText.replace(
+              regexp,
+              (matched) => {
+                isMatched = true;
+                return `<mark>${matched}</mark>`;
+              }
+            );
+          } else htmlFile.innerHTML = file.content || "New file";
+          return isMatched ? htmlFile : null;
+        });
+        if(!newDisplayFiles.length)
+          newDisplayFiles = this.state.files;
+        this.setState({
+          displayFiles:
+            // this.state.searchText === "" ? this.state.files : newDisplayFiles,
+            newDisplayFiles
+        });
+      }
+    );
   };
 
   onModalHandler = () => {
@@ -59,10 +98,12 @@ class App extends React.Component {
       content: "",
       lastModified: new Date().toISOString(),
       isLocked: false,
+      id: "file" + (this.state.files.length + 1),
     };
     files.unshift(newFile);
     this.setState({
       files: files,
+      displayFiles: files,
       enableEditor: true,
       editorText: "",
       currentFile: newFile,
@@ -101,6 +142,7 @@ class App extends React.Component {
         isLocked: false,
       },
       files: newfiles,
+      displayFiles: newfiles,
       editorText: "",
       enableEditor: false,
       currentFileIndex: -1,
@@ -115,6 +157,7 @@ class App extends React.Component {
     this.setState({
       currentFile: currentFile,
       files,
+      displayFiles: files,
     });
   };
 
@@ -133,19 +176,23 @@ class App extends React.Component {
           onLockFileHandler={this.onLockFileHandler}
           onDeleteFileHandler={this.onDeleteFileHandler}
           onViewChangeHandler={this.onViewChangeHandler}
+          onSearchTextChangeHandler={this.onSearchTextChangeHandler}
+          serachText={this.state.searchText}
           currentView={this.state.currentView}
         />
         <div className="mainContainer">
-          <div style={{ overflowY: 'auto' }}
+          <div
+            style={{ overflowY: "auto" }}
             className={
               this.state.currentView === "grid" ? "gridFileContainer" : null
             }
           >
-            {this.state.files.map((file, index) => (
+            {this.state.displayFiles.map((file, index) => (
               <FileThumbnail
                 key={index}
                 file={file}
                 index={index}
+                id={file.id}
                 active={index === this.state.currentFileIndex}
                 onChangeCurrentFileHandler={this.onChangeCurrentFileHandler}
               />

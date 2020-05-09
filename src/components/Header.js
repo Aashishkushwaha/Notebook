@@ -19,7 +19,7 @@ const Header = (props) => {
         <li onClick={props.onLockFileHandler} title="Lock/Unlock file"><img src={lock} alt="lock file"/></li>
       </ul>
       <div className={classes.searchContainer}>
-        <input placeholder="search" />
+        <input placeholder="search" onChange={props.onSearchTextChangeHandler} value={props.searchText}/>
       </div>
     </div>
   );

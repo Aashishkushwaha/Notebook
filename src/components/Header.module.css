@@ -24,7 +24,7 @@
 .optionsContainer > li {
   display: inline-block;
   padding: .4rem;
-  border-bottom: 2px inset #e6e485;
+  border-bottom: 2px inset #163cc5;
   border-radius: .4rem;
 }
 
@@ -53,6 +53,6 @@
 .searchContainer > input:focus {
   outline: none;
   text-align: justify;
-  border-bottom: 2px inset #e0d418fa;
+  border-bottom: 2px inset #163cc5;
   border-radius: .4rem;
 }
