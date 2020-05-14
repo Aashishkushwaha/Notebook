@@ -19,35 +19,35 @@
   resize: none;
   padding: 1.6rem 0.4rem;
   font-size: 1rem;
-  letter-spacing: .1rem;
+  letter-spacing: 0.1rem;
   border: none;
 }
 
 textarea:focus {
   outline: none;
-  box-shadow: 0 0 .4rem .1px inset #0a0a0a41;
+  box-shadow: 0 0 0.4rem 0.1px inset #0a0a0a41;
 }
 
 .timestamp {
   position: absolute;
-  top: .5rem;
+  top: 0.5rem;
   left: 50%;
   transform: translateX(-50%);
-  font-size: .8rem;
+  font-size: 0.8rem;
 }
 
 .fileContainer {
   list-style: none;
-  margin: .3rem;
-  padding: .5rem;
-  box-shadow: 0 0 4px .1px #0a0a0a41;
-  border-radius: .3rem;
+  margin: 0.3rem;
+  padding: 0.5rem;
+  box-shadow: 0 0 4px 0.1px #0a0a0a41;
+  border-radius: 0.3rem;
   border-bottom: 2px solid #163cc5;
 }
 
 .file {
   width: 100%;
-  padding: .3rem 0;
+  padding: 0.3rem 0;
   overflow: hidden;
   white-space: nowrap;
 }
@@ -64,17 +64,17 @@ textarea:focus {
   transform: translate(-30%, -50%);
   width: 60vw;
   padding: 1.6rem 1rem 1rem;
-  box-shadow: 0 6px 4px .1px rgba(93, 128, 151, 0.486);
+  box-shadow: 0 6px 4px 0.1px rgba(93, 128, 151, 0.486);
   background: #fff;
-  transition: all .4s;
+  transition: all 0.4s;
 }
 
 .close {
   position: absolute;
   right: 1rem;
-  top: .1rem;
+  top: 0.1rem;
   font-size: 1.6rem;
-  transition: color .5s;
+  transition: color 0.5s;
 }
 
 .close:hover {
@@ -107,7 +107,7 @@ textarea:focus {
 }
 
 ::-webkit-scrollbar {
-  width: .4rem;
+  width: 0.4rem;
 }
 
 /* Track */
@@ -125,4 +125,11 @@ textarea:focus {
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
+}
+
+.highlighter .highlighted {
+  background-color: #ffeaa7;
+  color: #e17055;
+  box-shadow: -3px 0 0 #ffeaa7, 3px 0 0 #ffeaa7;
+  /* Creates an illusion of a wider span, while not affecting the actual width. */
 }

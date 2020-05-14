@@ -54,6 +54,7 @@ class App extends React.Component {
           let htmlFile = document.getElementById(`${file.id}`);
           let isMatched = false;
           if (text.length && htmlFile) {
+            console.log('before text : ' + htmlFile.innerHTML)
             htmlFile.innerHTML = htmlFile.innerText.replace(
               regexp,
               (matched) => {
@@ -61,15 +62,9 @@ class App extends React.Component {
                 return `<mark>${matched}</mark>`;
               }
             );
-          } else htmlFile.innerHTML = file.content || "New file";
+            console.log('after text : ', htmlFile)
+          } else htmlFile.innerHTML = file.content ;// || "New file";
           return isMatched ? htmlFile : null;
-        });
-        if(!newDisplayFiles.length)
-          newDisplayFiles = this.state.files;
-        this.setState({
-          displayFiles:
-            // this.state.searchText === "" ? this.state.files : newDisplayFiles,
-            newDisplayFiles
         });
       }
     );
