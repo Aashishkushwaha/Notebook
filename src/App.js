@@ -46,8 +46,7 @@ class App extends React.Component {
         displayFiles: this.state.files
       },
       () => {
-        let newDisplayFiles = [...this.state.files];
-        newDisplayFiles = newDisplayFiles.filter((file, index) => {
+        [...this.state.files].filter((file, index) => {
           let text = this.state.searchText;
           let regexText = text.replace(/[-[\]{}()*+?.,\\^$|#(\s)]/g, "\\$&");
           let regexp = new RegExp(regexText, "ig");
@@ -116,7 +115,7 @@ class App extends React.Component {
     const { files, currentFileIndex } = { ...this.state };
 
     if (currentFileIndex !== -1)
-      if (files[currentFileIndex].isLocked) {
+      if (files[currentFileIndex]?.isLocked) {
         this.setState({
           showModal: true,
           modalContent: `File can't be deleted because file is locked. 
@@ -128,6 +127,7 @@ class App extends React.Component {
     let newfiles = [...files];
     newfiles = newfiles.filter((file, index) => {
       if (index !== currentFileIndex) return file;
+      return null
     });
 
     this.setState({
@@ -147,13 +147,15 @@ class App extends React.Component {
   onLockFileHandler = () => {
     const { files, currentFileIndex } = { ...this.state };
     const currentFile = files[currentFileIndex];
-    currentFile.isLocked = !currentFile.isLocked;
-    files[currentFileIndex] = currentFile;
-    this.setState({
-      currentFile: currentFile,
-      files,
-      displayFiles: files,
-    });
+    if(currentFile) {
+      currentFile.isLocked = !currentFile?.isLocked;
+      files[currentFileIndex] = currentFile;
+      this.setState({
+        currentFile: currentFile,
+        files,
+        displayFiles: files,
+      });
+    }
   };
 
   render() {
